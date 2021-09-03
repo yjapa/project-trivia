@@ -45,13 +45,15 @@ class Login extends Component {
     const { email, name, check, disable } = this.state;
 
     return (
-      <LoginInputs
-        email={ email }
-        name={ name }
-        check={ check }
-        disable={ disable }
-        handleChange={ this.handleChange }
-      />
+      <div className="container">
+        <LoginInputs
+          email={ email }
+          name={ name }
+          check={ check }
+          disable={ disable }
+          handleChange={ this.handleChange }
+        />
+      </div>
     );
   }
 }

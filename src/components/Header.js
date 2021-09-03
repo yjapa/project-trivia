@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import md5 from 'crypto-js/md5';
-import PropTypes from 'prop-types';
+// import md5 from 'crypto-js/md5';
+// import PropTypes from 'prop-types';
 
 class Header extends Component {
   render() {
-    const { email } = this.props;
-    const emailGravatar = md5(email).toString();
+    // const { email } = this.props;
+    // const emailGravatar = md5(email).toString();
     return (
       <div className="header">
         <div className="headerGamer">
           <img
-            src="`https://www.gravatar.com/avatar/${emailGravatar}`"
+            // src="`https://www.gravatar.com/avatar/${emailGravatar}`"
             alt="gravatar gamer"
             className="gravatar"
             data-testid="header-profile-picture"
@@ -32,8 +32,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  email: PropTypes.string.isRequired,
-  emailGravatar: PropTypes.string.isRequired,
+  // email: PropTypes.string.isRequired,
+  // emailGravatar: PropTypes.string.isRequired,
 };
 
 export default Header;
