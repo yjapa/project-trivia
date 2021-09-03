@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoginInputs from '../components/LoginInputs';
 import apiTOKEN from '../actions/services';
+import infoPlayer from '../actions';
 
 class Login extends Component {
   constructor() {
@@ -20,6 +21,7 @@ class Login extends Component {
     this.validateEmail = this.validateEmail.bind(this);
     this.validateName = this.validateName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfig = this.handleConfig.bind(this);
   }
 
   handleChange({ target }) {
@@ -46,29 +48,40 @@ class Login extends Component {
   }
 
   handleSubmit() {
-    const { history, getToken } = this.props;
+    const { name } = this.state;
+    const { history, getToken, getPlayer } = this.props;
     history.push('/game');
     getToken();
+    getPlayer(name);
+  }
+
+  handleConfig() {
+    const { history } = this.props;
+    history.push('/config');
   }
 
   render() {
     const { email, name, check, disable } = this.state;
 
     return (
-      <LoginInputs
-        email={ email }
-        name={ name }
-        check={ check }
-        disable={ disable }
-        handleChange={ this.handleChange }
-        handleSubmit={ this.handleSubmit }
-      />
+      <div className="container">
+        <LoginInputs
+          email={ email }
+          name={ name }
+          check={ check }
+          disable={ disable }
+          handleChange={ this.handleChange }
+          handleSubmit={ this.handleSubmit }
+          handleConfig={ this.handleConfig }
+        />
+      </div>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   getToken: () => dispatch(apiTOKEN()),
+  getPlayer: (payload) => dispatch(infoPlayer(payload)),
 });
 
 Login.propTypes = {
@@ -76,6 +89,7 @@ Login.propTypes = {
     push: PropTypes.func.isRequired,
   }).isRequired,
   getToken: PropTypes.func.isRequired,
+  getPlayer: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

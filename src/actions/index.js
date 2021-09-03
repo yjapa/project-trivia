@@ -1,9 +1,7 @@
-// import { apiTOKEN } from './services';
+const INFO_PLAYER = 'INFO_PLAYER';
 
-// const USER_ACT = 'USER_ACT';
+const infoPlayer = (payload) => ({
+  type: INFO_PLAYER, payload,
+});
 
-// export const userAct = (payload) => ({
-//   type: USER_ACT, payload,
-// });
-
-// export const apiTOKEN;
+export default infoPlayer;
