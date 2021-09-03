@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class LoginInputs extends Component {
   render() {
@@ -43,6 +44,9 @@ class LoginInputs extends Component {
         >
           Jogar
         </button>
+        <Link data-testid="btn-settings" to="/config">
+          <button type="button">Configurações</button>
+        </Link>
       </div>
     );
   }
