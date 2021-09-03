@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class LoginInputs extends Component {
   render() {
-    const { email, name, check, handleChange } = this.props;
+    const { email, name, check, handleChange, handleSubmit } = this.props;
 
     return (
       <div>
@@ -39,6 +39,7 @@ class LoginInputs extends Component {
           type="button"
           data-testid="btn-play"
           disabled={ check.checkEmail === false || check.checkName === false }
+          onClick={ handleSubmit }
         >
           Jogar
         </button>
@@ -55,6 +56,7 @@ LoginInputs.propTypes = {
     checkName: PropTypes.bool.isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default LoginInputs;
