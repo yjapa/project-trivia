@@ -1,21 +1,15 @@
 const INITIAL_STATE = {
-
+  questions: [],
 };
 
-const game = (state = initialState, action) => {
+const game = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case 'REQUEST_TOKEN':
-    return { ...state, ...action.payload };
-  case 'RECEIVE_TOKEN':
-    return { ...state, ...action.payload };
-  case 'REQUEST_ERROR':
-    return { ...state, ...action.payload };
   case 'QUESTIONS_LOADING':
     return { ...state, ...action.payload };
   case 'QUESTIONS_OK':
-    return { ...state, ...action.payload };
-  case 'QUESTIONS_ERROR':
-    return { ...state, ...action.payload };
+    return { ...state, questions: action.payload };
+  // case 'QUESTIONS_ERROR':
+  //   return { ...state, status: 'error' };
   default:
     return state;
   }
