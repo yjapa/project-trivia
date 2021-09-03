@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoginInputs from '../components/LoginInputs';
 import apiTOKEN from '../actions/services';
-import infoPlayer from '../actions';
+import { infoPlayer } from '../actions';
 
 class Login extends Component {
   constructor() {

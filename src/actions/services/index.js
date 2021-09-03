@@ -43,8 +43,8 @@ export function apiQUESTIONS(token) {
     try {
       dispatch(questionsApi());
       const response = await fetch(`https://opentdb.com/api.php?amount=5&token=${token}`);
-      const questions = await response.json().results;
-      return dispatch(questionsApiOk(questions));
+      const questions = await response.json();
+      return dispatch(questionsApiOk(questions.results));
     } catch (error) {
       return dispatch(questionsApiError(error));
     }

@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import apiQUESTIONS from '../actions';
+import { apiQUESTIONS } from '../actions/services';
 
 class Questions extends Component {
-  componentDidMount() {
-    const { token, getQuestions } = this.props;
-    getQuestions(token);
-  }
 
+  handleClick = () => {
+    const { token, getQuestions } = this.props;
+    const a = getQuestions(token);
+    console.log(a)
+  }
   render() {
+
     const { questions } = this.props;
-    console.log(questions);
+    // console.log(questions);
+
     return (
       <div>
+        <button
+        onClick={ this.handleClick }
+        >
+          AEPAÇOCA
+        </button>
         <div>
           <div datatest-id="question-category">
             category
