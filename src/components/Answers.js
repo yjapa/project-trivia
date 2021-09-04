@@ -6,9 +6,10 @@ class Answers extends Component {
     const { question } = this.props;
     const arrayQuestions = [];
     arrayQuestions.push(question.correct_answer, ...question.incorrect_answers);
-    const randomQuestions = arrayQuestions.sort();
-    if ( randomQuestions[0] === question.correct_answer) { 
-      return randomQuestions.reverse()
+    const sortQuestions = arrayQuestions.sort();
+    let randomQuestions = sortQuestions;
+    if (sortQuestions[0] === question.correct_answer) {
+      randomQuestions = sortQuestions.reverse();
     }
     return (
       <div>
