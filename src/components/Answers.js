@@ -7,8 +7,8 @@ class Answers extends Component {
     const arrayQuestions = [];
     arrayQuestions.push(question.correct_answer, ...question.incorrect_answers);
     const randomQuestions = arrayQuestions.sort();
-    if ( randomQuestions[0] === question.correct_answer) { 
-      return randomQuestions.reverse()
+    if (randomQuestions[0] === question.correct_answer) {
+      return randomQuestions.reverse();
     }
     return (
       <div>
