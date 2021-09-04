@@ -34,8 +34,8 @@ const questionsApiOk = (payload) => ({
   type: 'QUESTIONS_OK', payload,
 });
 
-const questionsApiError = () => ({
-  type: 'QUESTIONS_ERROR', status: 'Fail',
+const questionsApiError = (error) => ({
+  type: 'QUESTIONS_ERROR', status: error,
 });
 
 export function apiQUESTIONS(token) {
