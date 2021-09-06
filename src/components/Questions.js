@@ -7,9 +7,7 @@ import Answers from './Answers';
 class Questions extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      index: 0,
-    };
+
     this.handleClick = this.handleClick.bind(this);
     this.quest = this.quest.bind(this);
   }
@@ -20,14 +18,13 @@ class Questions extends Component {
   }
 
   handleClick() {
-    const { index } = this.state;
+    const { index, nextQuestion, reloadTime, timerGame } = this.props;
     const numberTest = 4;
     if (index === numberTest) {
       // localStorage.setItem('usuario', JSON.stringify(usuario));
-      console.log('FINAL');
     } else {
-      this.setState((prevState) => ({ index: prevState.index + 1 }
-      ));
+      nextQuestion();
+      reloadTime(timerGame);
     }
   }
 
@@ -60,7 +57,7 @@ class Questions extends Component {
 
   render() {
     const { questions } = this.props;
-    const { index } = this.state;
+    const { index } = this.props;
     if (questions.length === 0) return <p>Loading..</p>;
     const questionMap = questions.map((question) => this.quest(question));
     return (
