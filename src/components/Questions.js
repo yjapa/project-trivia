@@ -32,6 +32,7 @@ class Questions extends Component {
   }
 
   quest(question) {
+    const { currentTime } = this.props;
     return (
       <div>
         <div>
@@ -43,7 +44,10 @@ class Questions extends Component {
           </div>
         </div>
         <span>time</span>
-        <Answers question={ question } />
+        <Answers
+          question={ question }
+          currentTime={ currentTime }
+        />
         <button
           type="button"
           onClick={ this.handleClick }

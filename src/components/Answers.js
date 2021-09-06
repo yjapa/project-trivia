@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class Answers extends Component {
   render() {
-    const { question } = this.props;
+    const { question, currentTime } = this.props;
     const arrayQuestions = [];
     arrayQuestions.push(question.correct_answer, ...question.incorrect_answers);
     const sortQuestions = arrayQuestions.sort();
@@ -20,6 +21,7 @@ class Answers extends Component {
                 key={ index }
                 data-testid="correct-answer"
                 type="button"
+                disabled={ currentTime === 0 }
               >
                 {randomQuestion}
               </button>
@@ -30,6 +32,7 @@ class Answers extends Component {
               key={ index }
               data-testid={ `wrong-answer-${index}` }
               type="button"
+              disabled={ currentTime === 0 }
             >
               {randomQuestion}
             </button>
@@ -40,8 +43,12 @@ class Answers extends Component {
   }
 }
 
+const mapStateToProps = ({ game }) => ({
+  disabled: game.disabled,
+});
+
 Answers.propTypes = {
   question: PropTypes.arrayOf(Object),
 }.isRequired;
 
-export default Answers;
+export default connect(mapStateToProps)(Answers);

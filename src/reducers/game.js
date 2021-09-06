@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   questions: [],
+  disabled: false,
 };
 
 const game = (state = INITIAL_STATE, action) => {
