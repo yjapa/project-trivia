@@ -3,18 +3,27 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { apiQUESTIONS } from '../actions/services';
 import Answers from './Answers';
+import NextBtn from './NextBtn';
 
 class Questions extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      visible: false,
+    };
 
     this.handleClick = this.handleClick.bind(this);
     this.quest = this.quest.bind(this);
+    this.enableButton = this.enableButton.bind(this);
   }
 
   componentDidMount() {
     const { token, getQuestions } = this.props;
     getQuestions(token);
+  }
+
+  enableButton() {
+    this.setState({ visible: true });
   }
 
   handleClick() {
@@ -25,11 +34,13 @@ class Questions extends Component {
     } else {
       nextQuestion();
       reloadTime(timerGame);
+      this.setState({ visible: false });
     }
   }
 
   quest(question) {
     const { currentTime } = this.props;
+    const { visible } = this.state;
     return (
       <div>
         <div>
@@ -44,13 +55,9 @@ class Questions extends Component {
         <Answers
           question={ question }
           currentTime={ currentTime }
+          onClick={ this.enableButton }
         />
-        <button
-          type="button"
-          onClick={ this.handleClick }
-        >
-          Increment
-        </button>
+        { visible ? <NextBtn onClick={ this.handleClick } /> : null}
       </div>
     );
   }
