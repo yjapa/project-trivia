@@ -4,18 +4,13 @@ import { connect } from 'react-redux';
 
 class Answers extends Component {
   render() {
-    const { question, currentTime } = this.props;
-    console.log(question);
+    const { question, currentTime, enableButton } = this.props;
     const arrayQuestions = [];
     arrayQuestions.push(question.correct_answer, ...question.incorrect_answers);
     const sortQuestions = arrayQuestions.sort();
     let randomQuestions = sortQuestions;
     if (sortQuestions[0] === question.correct_answer) {
       randomQuestions = sortQuestions.reverse();
-    }
-    const handleClick = (currentTime, difficulty) => {
-      const points = 10;
-      localStorage.setItem('Points', JSON.stringify(points));
     }
     return (
       <div>
@@ -27,7 +22,7 @@ class Answers extends Component {
                 data-testid="correct-answer"
                 type="button"
                 disabled={ currentTime === 0 }
-                onClick={ handleClick(currentTime, question.difficulty) }
+                onClick={ enableButton }
               >
                 {randomQuestion}
               </button>
@@ -39,7 +34,7 @@ class Answers extends Component {
               data-testid={ `wrong-answer-${index}` }
               type="button"
               disabled={ currentTime === 0 }
-              onClick={ handleClick(currentTime, question.difficulty) }
+              onClick={ enableButton }
             >
               {randomQuestion}
             </button>

@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { apiQUESTIONS } from '../actions/services';
 import Answers from './Answers';
+import NextBtn from './NextBtn';
 
 class Questions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: 0,
-      score: 0,
+      visible: false,
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
     this.quest = this.quest.bind(this);
+    this.enableButton = this.enableButton.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +22,11 @@ class Questions extends Component {
     getQuestions(token);
   }
 
-  handleClick() {
+  enableButton() {
+    this.setState({ visible: true });
+  }
+
+  nextQuestion() {
     const { index, nextQuestion, reloadTime, timerGame } = this.props;
     const numberTest = 4;
     if (index === numberTest) {
@@ -29,11 +34,13 @@ class Questions extends Component {
     } else {
       nextQuestion();
       reloadTime(timerGame);
+      this.setState({ visible: false });
     }
   }
 
   quest(question) {
     const { currentTime } = this.props;
+    const { visible } = this.state;
     return (
       <div>
         <div>
@@ -48,13 +55,9 @@ class Questions extends Component {
         <Answers
           question={ question }
           currentTime={ currentTime }
+          enableButton={ this.enableButton }
         />
-        <button
-          type="button"
-          onClick={ this.handleClick }
-        >
-          Increment
-        </button>
+        { visible ? <NextBtn nextQuestion={ this.nextQuestion } /> : null}
       </div>
     );
   }
@@ -77,7 +80,6 @@ const mapStateToProps = ({ player, game }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getQuestions: (payload) => dispatch(apiQUESTIONS(payload)),
-  score: (payload) => dispatch()
 });
 
 Questions.propTypes = {
