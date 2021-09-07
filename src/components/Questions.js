@@ -11,6 +11,7 @@ class Questions extends Component {
       index: 0,
       score: 0,
     };
+
     this.handleClick = this.handleClick.bind(this);
     this.quest = this.quest.bind(this);
   }
@@ -21,18 +22,18 @@ class Questions extends Component {
   }
 
   handleClick() {
-    const { index } = this.state;
+    const { index, nextQuestion, reloadTime, timerGame } = this.props;
     const numberTest = 4;
     if (index === numberTest) {
       // localStorage.setItem('usuario', JSON.stringify(usuario));
-      console.log('FINAL');
     } else {
-      this.setState((prevState) => ({ index: prevState.index + 1 }
-      ));
+      nextQuestion();
+      reloadTime(timerGame);
     }
   }
 
   quest(question) {
+    const { currentTime } = this.props;
     return (
       <div>
         <div>
@@ -44,7 +45,10 @@ class Questions extends Component {
           </div>
         </div>
         <span>time</span>
-        <Answers question={ question } />
+        <Answers
+          question={ question }
+          currentTime={ currentTime }
+        />
         <button
           type="button"
           onClick={ this.handleClick }
@@ -57,7 +61,7 @@ class Questions extends Component {
 
   render() {
     const { questions } = this.props;
-    const { index } = this.state;
+    const { index } = this.props;
     if (questions.length === 0) return <p>Loading..</p>;
     const questionMap = questions.map((question) => this.quest(question));
     return (
