@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { apiQUESTIONS } from '../actions/services';
 import Answers from './Answers';
 
 class Questions extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.handleClick = this.handleClick.bind(this);
     this.quest = this.quest.bind(this);
@@ -18,9 +19,10 @@ class Questions extends Component {
   }
 
   handleClick() {
-    const { index, nextQuestion, reloadTime, timerGame } = this.props;
+    const { index, nextQuestion, reloadTime, timerGame, history } = this.props;
     const numberTest = 4;
     if (index === numberTest) {
+      history.push('/feedback');
       // localStorage.setItem('usuario', JSON.stringify(usuario));
     } else {
       nextQuestion();
@@ -48,8 +50,9 @@ class Questions extends Component {
         <button
           type="button"
           onClick={ this.handleClick }
+          data-testid="btn-next"
         >
-          Increment
+          Próxima
         </button>
       </div>
     );
@@ -80,4 +83,4 @@ Questions.propTypes = {
   getQuestions: PropTypes.func,
 }.isRequired;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Questions);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Questions));
