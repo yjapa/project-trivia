@@ -9,6 +9,7 @@ class Questions extends Component {
     super(props);
     this.state = {
       index: 0,
+      score: 0,
     };
     this.handleClick = this.handleClick.bind(this);
     this.quest = this.quest.bind(this);
@@ -72,6 +73,7 @@ const mapStateToProps = ({ player, game }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getQuestions: (payload) => dispatch(apiQUESTIONS(payload)),
+  score: (payload) => dispatch()
 });
 
 Questions.propTypes = {

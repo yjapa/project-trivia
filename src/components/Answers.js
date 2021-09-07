@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Answers extends Component {
+  handleClick() {
+    
+  }
   render() {
     const { question } = this.props;
     const arrayQuestions = [];
@@ -20,6 +23,7 @@ class Answers extends Component {
                 key={ index }
                 data-testid="correct-answer"
                 type="button"
+                onClick={ this.handleClick }
               >
                 {randomQuestion}
               </button>
