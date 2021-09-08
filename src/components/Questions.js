@@ -14,6 +14,7 @@ class Questions extends Component {
       visible: false,
       assertions: 0,
       disableQuestions: false,
+      className: false,
     };
 
     this.nextQuestion = this.nextQuestion.bind(this);
@@ -33,7 +34,7 @@ class Questions extends Component {
   }
 
   enableButton(currTime, diff) {
-    this.setState({ visible: true, disableQuestions: true });
+    this.setState({ visible: true, disableQuestions: true, className: true });
     if (currTime && diff) {
       const { name, email, score, getScore } = this.props;
       const { assertions } = this.state;
@@ -67,13 +68,13 @@ class Questions extends Component {
     } else {
       nextQuestion();
       reloadTime(timerGame);
-      this.setState({ visible: false, disableQuestions: false });
+      this.setState({ visible: false, disableQuestions: false, className: false });
     }
   }
 
   quest(question) {
     const { currentTime } = this.props;
-    const { visible, disableQuestions } = this.state;
+    const { visible, disableQuestions, className } = this.state;
     return (
       <div className="questions">
         <div>
@@ -89,6 +90,7 @@ class Questions extends Component {
           currentTime={ currentTime }
           enableButton={ this.enableButton }
           disableQuestions={ disableQuestions }
+          className={ className }
         />
         { visible ? <NextBtn nextQuestion={ this.nextQuestion } /> : null}
       </div>
