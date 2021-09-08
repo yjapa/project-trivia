@@ -74,16 +74,15 @@ class Questions extends Component {
     const { currentTime } = this.props;
     const { visible } = this.state;
     return (
-      <div>
+      <div className="questions">
         <div>
-          <div data-testid="question-category">
+          <div className="category" data-testid="question-category">
             { question.category }
           </div>
-          <div data-testid="question-text">
+          <div className="question" data-testid="question-text">
             { question.question }
           </div>
         </div>
-        <span>time</span>
         <Answers
           question={ question }
           currentTime={ currentTime }
@@ -100,7 +99,7 @@ class Questions extends Component {
     if (questions.length === 0) return <p>Loading..</p>;
     const questionMap = questions.map((question) => this.quest(question));
     return (
-      questionMap[index]
+      <div className="divQuestion">{questionMap[index]}</div>
     );
   }
 }

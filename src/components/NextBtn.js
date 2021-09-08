@@ -10,6 +10,7 @@ class NextBtn extends Component {
           type="button"
           data-testid="btn-next"
           onClick={ nextQuestion }
+          className="nextBtn"
         >
           Próxima
         </button>
