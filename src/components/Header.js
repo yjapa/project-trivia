@@ -27,7 +27,6 @@ class Header extends Component {
           <p>
             Pontos:
             <span data-testid="header-score">
-              {' '}
               {score}
             </span>
           </p>
