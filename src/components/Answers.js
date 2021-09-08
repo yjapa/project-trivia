@@ -13,7 +13,7 @@ class Answers extends Component {
       randomQuestions = sortQuestions.reverse();
     }
     return (
-      <div>
+      <div className="answers">
         {randomQuestions.map((randomQuestion, index) => {
           if (randomQuestion === question.correct_answer) {
             return (
