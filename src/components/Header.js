@@ -9,16 +9,21 @@ class Header extends Component {
     super(props);
     this.state = {
       url: '',
-    }
+    };
+    this.setUrl = this.setUrl.bind(this);
   }
 
   componentDidMount() {
+    this.setUrl();
+  }
+
+  setUrl() {
     const { email } = this.props;
     const emailGravatar = md5(email).toString();
     this.setState({
-      url: `https://www.gravatar.com/avatar/${emailGravatar}`,
-    });
+      url: `https://www.gravatar.com/avatar/${emailGravatar}` });
   }
+
   render() {
     const { name, score } = this.props;
     const { url } = this.state;

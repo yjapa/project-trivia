@@ -23,7 +23,7 @@ class Answers extends Component {
                 key={ index }
                 data-testid="correct-answer"
                 type="button"
-                className={ className ? 'correct' : ''}
+                className={ className ? 'correct' : '' }
                 disabled={ currentTime === 0 || disableQuestions === true }
                 onClick={ () => enableButton(currentTime, question.difficulty) }
               >
@@ -36,7 +36,7 @@ class Answers extends Component {
               key={ index }
               data-testid={ `wrong-answer-${index}` }
               type="button"
-              className={ className ? 'incorrect' : ''}
+              className={ className ? 'incorrect' : '' }
               disabled={ currentTime === 0 || disableQuestions === true }
               onClick={ enableButton }
             >
