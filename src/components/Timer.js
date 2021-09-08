@@ -10,7 +10,7 @@ class Timer extends Component {
   render() {
     const { currentTime } = this.props;
     return (
-      <p>{currentTime}</p>
+      <p className="timer">{ currentTime }</p>
     );
   }
 }

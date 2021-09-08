@@ -18,6 +18,7 @@ class LoginInputs extends Component {
         <button
           type="button"
           data-testid="btn-settings"
+          className="btn float-right settings_btn"
           onClick={ handleConfig }
         >
           Configurações

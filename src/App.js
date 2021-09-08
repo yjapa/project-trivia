@@ -14,6 +14,7 @@ function App() {
       <Route path="/config" component={ Config } />
       <Route path="/feedback" component={ Feedback } />
       <Route path="/ranking" component={ Ranking } />
+      <Route path="/feedback" component={ Feedback } />
     </Switch>
   );
 }

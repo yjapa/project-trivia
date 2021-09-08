@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   name: '',
+  email: '',
   score: 0,
   picture: '',
   token: '',
@@ -10,7 +11,9 @@ const player = (state = INITIAL_STATE, action) => {
   case 'INFO_PLAYER':
     return {
       ...state,
-      name: action.payload,
+      name: action.payload.name,
+      email: action.payload.email,
+      score: action.payload.score,
     };
   case 'TOKEN_PLAYER':
     return {

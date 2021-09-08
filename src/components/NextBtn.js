@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 class NextBtn extends Component {
   render() {
-    const { onClick } = this.props;
+    const { nextQuestion } = this.props;
     return (
       <div>
         <button
           type="button"
           data-testid="btn-next"
-          onClick={ onClick }
+          onClick={ nextQuestion }
+          className="nextBtn"
         >
           Próxima
         </button>

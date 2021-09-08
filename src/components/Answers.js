@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 class Answers extends Component {
   render() {
-    const { question, currentTime, onClick } = this.props;
+    const { question, currentTime, enableButton } = this.props;
+    console.log(question);
     const arrayQuestions = [];
     arrayQuestions.push(question.correct_answer, ...question.incorrect_answers);
     const sortQuestions = arrayQuestions.sort();
@@ -13,7 +14,7 @@ class Answers extends Component {
       randomQuestions = sortQuestions.reverse();
     }
     return (
-      <div>
+      <div className="answers">
         {randomQuestions.map((randomQuestion, index) => {
           if (randomQuestion === question.correct_answer) {
             return (
@@ -22,7 +23,7 @@ class Answers extends Component {
                 data-testid="correct-answer"
                 type="button"
                 disabled={ currentTime === 0 }
-                onClick={ onClick }
+                onClick={ () => enableButton(currentTime, question.difficulty) }
               >
                 {randomQuestion}
               </button>
@@ -34,7 +35,7 @@ class Answers extends Component {
               data-testid={ `wrong-answer-${index}` }
               type="button"
               disabled={ currentTime === 0 }
-              onClick={ onClick }
+              onClick={ enableButton }
             >
               {randomQuestion}
             </button>

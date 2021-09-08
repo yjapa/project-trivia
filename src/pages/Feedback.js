@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Feedback extends Component {
+class Feedback extends React.Component {
   render() {
     return (
-      <p data-testid="feedback-text">oi</p>
+      <p data-testid="feedback-text">Feedback page</p>
     );
   }
 }

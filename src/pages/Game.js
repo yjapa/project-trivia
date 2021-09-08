@@ -53,7 +53,8 @@ class Game extends Component {
   render() {
     const { currentTime, index } = this.state;
     return (
-      <>
+      <div className="game">
+        <h1>TrybeTrivia</h1>
         <Header />
         <Questions
           currentTime={ currentTime }
@@ -63,7 +64,7 @@ class Game extends Component {
           timerGame={ this.timerGame }
         />
         <Timer timerGame={ this.timerGame } currentTime={ currentTime } />
-      </>
+      </div>
     );
   }
 }
