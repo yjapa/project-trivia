@@ -211,8 +211,8 @@ input:focus {
   color: purple;
 }
 
-.increment{
-  font-size:18px;
+.nextBtn {
+  font-size: 18px;
   background-color: #ff7d12e7;
   color: white;
   padding: 10px;
