@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 class Answers extends Component {
   render() {
     const { question, currentTime, enableButton } = this.props;
+    console.log(question);
     const arrayQuestions = [];
     arrayQuestions.push(question.correct_answer, ...question.incorrect_answers);
     const sortQuestions = arrayQuestions.sort();
@@ -22,7 +23,7 @@ class Answers extends Component {
                 data-testid="correct-answer"
                 type="button"
                 disabled={ currentTime === 0 }
-                onClick={ enableButton }
+                onClick={ () => enableButton(currentTime, question.difficulty) }
               >
                 {randomQuestion}
               </button>

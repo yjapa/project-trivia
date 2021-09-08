@@ -48,11 +48,15 @@ class Login extends Component {
   }
 
   handleSubmit() {
-    const { name } = this.state;
+    const { name, email } = this.state;
+    const pay = {
+      name,
+      email,
+    };
     const { history, getToken, getPlayer } = this.props;
     history.push('/game');
     getToken();
-    getPlayer(name);
+    getPlayer(pay);
   }
 
   handleConfig() {
