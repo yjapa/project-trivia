@@ -207,7 +207,6 @@ input:focus {
   margin: 10px;
   min-width: 100px;
   border-radius: 5px;
-  border-color: purple;
   color: purple;
 }
 
@@ -220,4 +219,12 @@ input:focus {
   width: 150px;
   border-radius: 5px;
   border-color: purple;
+}
+
+.correct {
+  border: 3px solid rgb(6, 240, 15);
+}
+
+.incorrect {
+  border: 3px solid rgb(255, 0, 0);
 }
