@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Answers extends Component {
   render() {
-    const { question, currentTime, enableButton } = this.props;
+    const { question, currentTime, enableButton, disableQuestions } = this.props;
     console.log(question);
     const arrayQuestions = [];
     arrayQuestions.push(question.correct_answer, ...question.incorrect_answers);
@@ -22,7 +22,7 @@ class Answers extends Component {
                 key={ index }
                 data-testid="correct-answer"
                 type="button"
-                disabled={ currentTime === 0 }
+                disabled={ currentTime === 0 || disableQuestions === true }
                 onClick={ () => enableButton(currentTime, question.difficulty) }
               >
                 {randomQuestion}
@@ -34,7 +34,7 @@ class Answers extends Component {
               key={ index }
               data-testid={ `wrong-answer-${index}` }
               type="button"
-              disabled={ currentTime === 0 }
+              disabled={ currentTime === 0 || disableQuestions === true }
               onClick={ enableButton }
             >
               {randomQuestion}
