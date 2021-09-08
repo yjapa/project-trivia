@@ -10,10 +10,12 @@ const player = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case 'INFO_PLAYER':
     return {
-      ...state,
-      name: action.payload.name,
+      ...state, name: action.payload.name,
       email: action.payload.email,
-      score: action.payload.score,
+    };
+  case 'GET_SCORE':
+    return {
+      ...state, score: action.payload.score,
     };
   case 'TOKEN_PLAYER':
     return {

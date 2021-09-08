@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 import { apiQUESTIONS } from '../actions/services';
 import Answers from './Answers';
 import NextBtn from './NextBtn';
-import { infoPlayer } from '../actions';
+import { scorePlayer } from '../actions';
 
 class Questions extends Component {
   constructor(props) {
@@ -114,7 +114,7 @@ const mapStateToProps = ({ player, game }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getQuestions: (payload) => dispatch(apiQUESTIONS(payload)),
-  getScore: (payload) => dispatch(infoPlayer(payload)),
+  getScore: (payload) => dispatch(scorePlayer(payload)),
 });
 
 Questions.propTypes = {
