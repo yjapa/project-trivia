@@ -13,4 +13,3 @@ export const scorePlayer = (payload) => ({
 export const getQuestions = (payload) => ({
   type: GET_QUESTIONS, payload,
 });
-

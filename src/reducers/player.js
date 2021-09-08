@@ -10,7 +10,8 @@ const player = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case 'INFO_PLAYER':
     return {
-      ...state, name: action.payload.name,
+      ...state,
+      name: action.payload.name,
       email: action.payload.email,
     };
   case 'GET_SCORE':
