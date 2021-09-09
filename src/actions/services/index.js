@@ -16,7 +16,7 @@ export default function apiTOKEN() {
       dispatch(requestApi());
       const response = await fetch('https://opentdb.com/api_token.php?command=request');
       const token = await response.json();
-      localStorage.setItem('token', JSON.stringify(token.token));
+      // localStorage.setItem('token', JSON.stringify(token.token));
       return dispatch(receiveToken(token.token));
     } catch (error) {
       return dispatch(requestError());
