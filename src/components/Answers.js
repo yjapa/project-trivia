@@ -6,7 +6,6 @@ class Answers extends Component {
   render() {
     const { question, currentTime, enableButton,
       disableQuestions, className } = this.props;
-    console.log(question);
     const arrayQuestions = [];
     arrayQuestions.push(question.correct_answer, ...question.incorrect_answers);
     const sortQuestions = arrayQuestions.sort();

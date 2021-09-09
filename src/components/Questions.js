@@ -60,7 +60,8 @@ class Questions extends Component {
   }
 
   enableButton(currTime, diff) {
-    const { clickedTrue } = this.props;
+    const { clickedTrue, stopTimer } = this.props;
+    stopTimer();
     this.setState({ visible: true, disableQuestions: true, className: true });
     clickedTrue();
     this.getScore(currTime, diff);
