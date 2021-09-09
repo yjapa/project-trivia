@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-
+//bug
 class Feedback extends React.Component {
   render() {
     const stateLocalstorage = JSON.parse(localStorage.getItem('state'));
