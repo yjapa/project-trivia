@@ -20,6 +20,7 @@ class Questions extends Component {
     this.nextQuestion = this.nextQuestion.bind(this);
     this.quest = this.quest.bind(this);
     this.enableButton = this.enableButton.bind(this);
+    this.getScore = this.getScore.bind(this);
   }
 
   componentDidMount() {
@@ -27,14 +28,7 @@ class Questions extends Component {
     getQuestions(token);
   }
 
-  count() {
-    this.setState((prevState) => ({
-      assertions: prevState.assertions + 1,
-    }));
-  }
-
-  enableButton(currTime, diff) {
-    this.setState({ visible: true, disableQuestions: true, className: true });
+  getScore(currTime, diff) {
     if (currTime && diff) {
       const { name, email, score, getScore } = this.props;
       const { assertions } = this.state;
@@ -59,15 +53,29 @@ class Questions extends Component {
     }
   }
 
+  count() {
+    this.setState((prevState) => ({
+      assertions: prevState.assertions + 1,
+    }));
+  }
+
+  enableButton(currTime, diff) {
+    const { clickedTrue } = this.props;
+    this.setState({ visible: true, disableQuestions: true, className: true });
+    clickedTrue();
+    this.getScore(currTime, diff);
+  }
+
   nextQuestion() {
-    const { index, nextQuestion, reloadTime, timerGame } = this.props;
+    const { index, questionIndex, clickedFalse, reloadTime } = this.props;
     const numberTest = 4;
     if (index === numberTest) {
       const { history } = this.props;
       history.push('/feedback');
     } else {
-      nextQuestion();
-      reloadTime(timerGame);
+      questionIndex();
+      reloadTime();
+      clickedFalse();
       this.setState({ visible: false, disableQuestions: false, className: false });
     }
   }
@@ -92,7 +100,8 @@ class Questions extends Component {
           disableQuestions={ disableQuestions }
           className={ className }
         />
-        { visible ? <NextBtn nextQuestion={ this.nextQuestion } /> : null}
+        { visible || currentTime === 0
+          ? <NextBtn nextQuestion={ this.nextQuestion } /> : null}
       </div>
     );
   }

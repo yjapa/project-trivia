@@ -10,44 +10,52 @@ class Game extends Component {
     this.state = {
       currentTime: 30,
       index: 0,
+      clicked: false,
     };
 
-    this.nextQuestion = this.nextQuestion.bind(this);
+    this.questionIndex = this.questionIndex.bind(this);
     this.setTimer = this.setTimer.bind(this);
-    this.reloadTime = this.reloadTime.bind(this);
     this.timerGame = this.timerGame.bind(this);
-    this.clearTimeInterval = this.clearTimeInterval.bind(this);
+    this.reloadTime = this.reloadTime.bind(this);
+    this.clickedTrue = this.clickedTrue.bind(this);
+    this.clickedFalse = this.clickedFalse.bind(this);
   }
 
   setTimer(callback) {
     this.setState((prevState) => ({ currentTime: prevState.currentTime - 1 }), callback);
   }
 
-  nextQuestion() {
+  questionIndex() {
     this.setState((prevState) => ({ index: prevState.index + 1 }
     ));
   }
 
-  reloadTime(callback) {
-    this.setState(({ currentTime: 30 }), callback);
+  clickedTrue() {
+    this.setState(({ clicked: true }));
+  }
+
+  clickedFalse() {
+    this.setState(({ clicked: false }));
   }
 
   clearTimeInterval() {
-    const { currentTime } = this.state;
-    if (currentTime === 0) {
+    const { currentTime, clicked } = this.state;
+    if (currentTime === 0 || clicked) {
       clearInterval(this.timer);
+      console.log(currentTime);
     }
+  }
+
+  reloadTime() {
+    this.setState(({ currentTime: 30 }));
+    this.timerGame();
   }
 
   timerGame() {
     const ONE_SECOND = 1000;
-    const FIVE_SECONDS = 5000;
-
-    setTimeout(() => {
-      this.timer = setInterval(() => {
-        this.setTimer(this.clearTimeInterval);
-      }, ONE_SECOND);
-    }, FIVE_SECONDS);
+    this.timer = setInterval(() => {
+      this.setTimer(this.clearTimeInterval);
+    }, ONE_SECOND);
   }
 
   render() {
@@ -59,9 +67,10 @@ class Game extends Component {
         <Questions
           currentTime={ currentTime }
           index={ index }
-          nextQuestion={ this.nextQuestion }
+          questionIndex={ this.questionIndex }
           reloadTime={ this.reloadTime }
-          timerGame={ this.timerGame }
+          clickedTrue={ this.clickedTrue }
+          clickedFalse={ this.clickedFalse }
         />
         <Timer timerGame={ this.timerGame } currentTime={ currentTime } />
       </div>
