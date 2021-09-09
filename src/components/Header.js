@@ -1,17 +1,38 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { imagePlayer } from '../actions';
 
 class Header extends Component {
-  render() {
-    const { email, name, score } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      url: '',
+    };
+    this.setUrl = this.setUrl.bind(this);
+  }
+
+  componentDidMount() {
+    this.setUrl();
+  }
+
+  setUrl() {
+    const { email, getUrl } = this.props;
     const emailGravatar = md5(email).toString();
+    getUrl(`https://www.gravatar.com/avatar/${emailGravatar}`);
+    this.setState({
+      url: `https://www.gravatar.com/avatar/${emailGravatar}` });
+  }
+
+  render() {
+    const { name, score } = this.props;
+    const { url } = this.state;
     return (
       <div className="header">
         <div className="headerGamer">
           <img
-            src={ `https://www.gravatar.com/avatar/${emailGravatar}` }
+            src={ url }
             alt="gravatar gamer"
             className="gravatar"
             data-testid="header-profile-picture"
@@ -39,12 +60,18 @@ class Header extends Component {
 const mapStateToProps = ({ player }) => ({
   name: player.name,
   score: player.score,
+  email: player.email,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getUrl: (payload) => dispatch(imagePlayer(payload)),
 });
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
+  getUrl: PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

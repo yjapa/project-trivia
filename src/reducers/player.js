@@ -22,6 +22,10 @@ const player = (state = INITIAL_STATE, action) => {
     return {
       ...state, token: action.payload,
     };
+  case 'GET_URL':
+    return {
+      ...state, picture: action.payload,
+    };
   default:
     return state;
   }
