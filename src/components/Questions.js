@@ -60,15 +60,14 @@ class Questions extends Component {
   }
 
   enableButton(currTime, diff) {
-    const { clickedTrue, stopTimer } = this.props;
+    const { stopTimer } = this.props;
     stopTimer();
     this.setState({ visible: true, disableQuestions: true, className: true });
-    clickedTrue();
     this.getScore(currTime, diff);
   }
 
   nextQuestion() {
-    const { index, questionIndex, clickedFalse, reloadTime } = this.props;
+    const { index, questionIndex, reloadTime } = this.props;
     const numberTest = 4;
     if (index === numberTest) {
       const { history } = this.props;
@@ -76,7 +75,6 @@ class Questions extends Component {
     } else {
       questionIndex();
       reloadTime();
-      clickedFalse();
       this.setState({ visible: false, disableQuestions: false, className: false });
     }
   }

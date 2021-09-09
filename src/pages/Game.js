@@ -10,15 +10,12 @@ class Game extends Component {
     this.state = {
       currentTime: 30,
       index: 0,
-      clicked: false,
     };
 
     this.questionIndex = this.questionIndex.bind(this);
     this.setTimer = this.setTimer.bind(this);
     this.timerGame = this.timerGame.bind(this);
     this.reloadTime = this.reloadTime.bind(this);
-    this.clickedTrue = this.clickedTrue.bind(this);
-    this.clickedFalse = this.clickedFalse.bind(this);
   }
 
   setTimer(callback) {
@@ -28,14 +25,6 @@ class Game extends Component {
   questionIndex() {
     this.setState((prevState) => ({ index: prevState.index + 1 }
     ));
-  }
-
-  clickedTrue() {
-    this.setState(({ clicked: true }));
-  }
-
-  clickedFalse() {
-    this.setState(({ clicked: false }));
   }
 
   clearTimeInterval() {
@@ -68,8 +57,6 @@ class Game extends Component {
           index={ index }
           questionIndex={ this.questionIndex }
           reloadTime={ this.reloadTime }
-          clickedTrue={ this.clickedTrue }
-          clickedFalse={ this.clickedFalse }
           stopTimer={ () => { clearInterval(this.timer); } }
         />
         <Timer timerGame={ this.timerGame } currentTime={ currentTime } />
