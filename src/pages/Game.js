@@ -70,7 +70,7 @@ class Game extends Component {
           reloadTime={ this.reloadTime }
           clickedTrue={ this.clickedTrue }
           clickedFalse={ this.clickedFalse }
-          stopTimer={ () => {clearInterval(this.timer)} }
+          stopTimer={ () => { clearInterval(this.timer); } }
         />
         <Timer timerGame={ this.timerGame } currentTime={ currentTime } />
       </div>
