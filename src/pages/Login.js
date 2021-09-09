@@ -57,6 +57,15 @@ class Login extends Component {
     history.push('/game');
     getToken();
     getPlayer(pay);
+    const state = {
+      player: {
+        name,
+        assertions: 0,
+        score: 0,
+        gravatarEmail: email,
+      },
+    };
+    localStorage.state = JSON.stringify(state);
   }
 
   handleConfig() {
