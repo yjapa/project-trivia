@@ -28,8 +28,8 @@ class Game extends Component {
   }
 
   clearTimeInterval() {
-    const { currentTime, clicked } = this.state;
-    if (currentTime === 0 || clicked) {
+    const { currentTime } = this.state;
+    if (currentTime === 0) {
       clearInterval(this.timer);
     }
   }
@@ -57,7 +57,7 @@ class Game extends Component {
           index={ index }
           questionIndex={ this.questionIndex }
           reloadTime={ this.reloadTime }
-          stopTimer={ () => { clearInterval(this.timer); } }
+          stopTimer={ () => clearInterval(this.timer) }
         />
         <Timer timerGame={ this.timerGame } currentTime={ currentTime } />
       </div>
