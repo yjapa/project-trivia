@@ -58,16 +58,16 @@ class Ranking extends Component {
     );
   }
 }
+
 Ranking.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
   players: PropTypes.arrayOf(Object).isRequired,
 };
+
 const mapStateToProps = ({ player }) => ({
   players: player.players,
 });
-// Ranking.defaultProps = {
-//   stateLocalStorage: [],
-// };
+
 export default connect(mapStateToProps)(Ranking);
