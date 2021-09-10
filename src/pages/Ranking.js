@@ -31,22 +31,24 @@ class Ranking extends Component {
       </div>
     ));
     return (
-      <div>
+      <div className="ranking">
         <h1 data-testid="ranking-title">Ranking</h1>
         { rankingPlayers }
-        <button
-          type="button"
-          onClick={ () => this.redirect('/feedback') }
-        >
-          Voltar
-        </button>
-        <button
-          type="button"
-          data-testid="btn-go-home"
-          onClick={ () => this.redirect('/') }
-        >
-          Jogar Novamente
-        </button>
+        <div className="buttonsRanking">
+          <button
+            type="button"
+            onClick={ () => this.redirect('/feedback') }
+          >
+            Voltar
+          </button>
+          <button
+            type="button"
+            data-testid="btn-go-home"
+            onClick={ () => this.redirect('/') }
+          >
+            Jogar Novamente
+          </button>
+        </div>
       </div>
     );
   }
