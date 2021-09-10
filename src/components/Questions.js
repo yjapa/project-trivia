@@ -125,8 +125,8 @@ const mapStateToProps = ({ player, game }) => ({
   email: player.email,
   token: player.token,
   score: player.score,
-  questions: game.questions,
   picture: player.picture,
+  questions: game.questions,
 });
 
 const mapDispatchToProps = (dispatch) => ({

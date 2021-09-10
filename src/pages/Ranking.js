@@ -15,12 +15,7 @@ class Ranking extends Component {
 
   render() {
     const { players } = this.props;
-    // beforePlayers.some()
-    localStorage.setItem('players', JSON.stringify(players));
-    const stateLocalStorage = JSON.parse(localStorage.getItem('players'));
-    /* // stateLocalStorage.players.sort((a, b) => (a.score < b.score ? -1 : a.score > b.score ? 1 : 0)); */
-    const scoreSort = stateLocalStorage.sort((a, b) => b.score - a.score);
-    // if (stateLocalStorage.length === 0) return <p>Loading...</p>;
+    const scoreSort = players.sort((a, b) => b.score - a.score);
     const rankingPlayers = scoreSort.map(({ name, picture, score }, index) => (
       <div key={ index }>
         <img

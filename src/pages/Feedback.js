@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { playerRanking } from '../actions';
+import { playerRanking, zerador } from '../actions';
 
 class Feedback extends React.Component {
   constructor() {
@@ -12,10 +12,22 @@ class Feedback extends React.Component {
   }
 
   componentDidMount() {
-    const { getPlayer, players } = this.props;
+    const { getPlayer } = this.props;
     const infoPlayer = JSON.parse(localStorage.getItem('ranking'));
     getPlayer(infoPlayer[0]);
-    localStorage.setItem('players', JSON.stringify(players));
+  }
+
+  componentWillUnmount() {
+    const { zeraPlayer } = this.props;
+    localStorage.ranking = JSON.stringify('[]');
+    const playerZerado = {
+      name: '',
+      email: '',
+      score: 0,
+      picture: '',
+      token: '',
+    };
+    zeraPlayer(playerZerado);
   }
 
   redirect(path) {
@@ -66,15 +78,12 @@ Feedback.propTypes = {
     push: PropTypes.func,
   }).isRequired,
   getPlayer: PropTypes.func.isRequired,
-  players: PropTypes.arrayOf(Object).isRequired,
+  zeraPlayer: PropTypes.func.isRequired,
 };
-
-const mapStateToProps = ({ player }) => ({
-  players: player.players,
-});
 
 const mapDispatchToProps = (dispatch) => ({
   getPlayer: (payload) => dispatch(playerRanking(payload)),
+  zeraPlayer: (payload) => dispatch(zerador(payload)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feedback);
+export default connect(null, mapDispatchToProps)(Feedback);

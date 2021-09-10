@@ -33,6 +33,15 @@ const player = (state = INITIAL_STATE, action) => {
       players: [...state.players,
         { ...action.payload }],
     };
+  case 'ZERA_PLAYER':
+    return {
+      ...state,
+      name: action.payload.name,
+      email: action.payload.email,
+      score: action.payload.score,
+      picture: action.payload.picture,
+      token: action.payload.token,
+    };
   default:
     return state;
   }
