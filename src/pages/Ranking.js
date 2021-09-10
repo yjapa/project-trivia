@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 class Ranking extends Component {
   constructor() {
     super();
-
     this.redirect = this.redirect.bind(this);
   }
 
@@ -21,7 +20,7 @@ class Ranking extends Component {
     // beforePlayers.some()
     localStorage.setItem('players', JSON.stringify(players));
     const stateLocalStorage = JSON.parse(localStorage.getItem('players'));
-    // stateLocalStorage.players.sort((a, b) => (a.score < b.score ? -1 : a.score > b.score ? 1 : 0));
+    /* // stateLocalStorage.players.sort((a, b) => (a.score < b.score ? -1 : a.score > b.score ? 1 : 0)); */
     const scoreSort = stateLocalStorage.sort((a, b) => b.score - a.score);
     // if (stateLocalStorage.length === 0) return <p>Loading...</p>;
     const rankingPlayers = scoreSort.map(({ name, picture, score }, index) => (
@@ -59,20 +58,16 @@ class Ranking extends Component {
     );
   }
 }
-
 Ranking.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
   players: PropTypes.arrayOf(Object).isRequired,
 };
-
 const mapStateToProps = ({ player }) => ({
   players: player.players,
 });
-
 // Ranking.defaultProps = {
 //   stateLocalStorage: [],
 // };
-
 export default connect(mapStateToProps)(Ranking);

@@ -12,9 +12,10 @@ class Feedback extends React.Component {
   }
 
   componentDidMount() {
-    const { getPlayer } = this.props;
+    const { getPlayer, players } = this.props;
     const infoPlayer = JSON.parse(localStorage.getItem('ranking'));
     getPlayer(infoPlayer[0]);
+    localStorage.setItem('players', JSON.stringify(players));
   }
 
   redirect(path) {
@@ -65,10 +66,15 @@ Feedback.propTypes = {
     push: PropTypes.func,
   }).isRequired,
   getPlayer: PropTypes.func.isRequired,
+  players: PropTypes.arrayOf(Object).isRequired,
 };
+
+const mapStateToProps = ({ player }) => ({
+  players: player.players,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getPlayer: (payload) => dispatch(playerRanking(payload)),
 });
 
-export default connect(null, mapDispatchToProps)(Feedback);
+export default connect(mapStateToProps, mapDispatchToProps)(Feedback);
