@@ -14,7 +14,7 @@ html {
   font-size: 12px;
 }
 
-.container {
+.container, .config {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@ html {
   font-size: 30px;
   color: white;
 }
-.container h1 {
+.container h1, .config h1 {
   margin-bottom: 70px;
   color: #ff7d12e7;
 }
@@ -77,7 +77,10 @@ html {
 }
 
 .login_btn,
-.settings_btn {
+.settings_btn,
+.btn-config,
+.buttonsFeedback button,
+.buttonsRanking button {
   width: 70%;
   height: 30px;
   border: none;
@@ -89,8 +92,11 @@ html {
   width: 100px;
 }
 
-.settings_btn {
-  background-color: rgb(102, 102, 102);
+.settings_btn,
+.btn-config,
+.buttonsFeedback button,
+.buttonsRanking button {
+  background-color: rgba(128, 128, 128, 0.541);
   color: #ffffffe7;
   font-size: 10px;
   border: 1px solid white;
@@ -113,7 +119,7 @@ input:focus {
 }
 
 .game {
-  margin-top: 30%;
+  margin-top: 20%;
   min-width: 600px;
   min-height: 500px;
   display: flex;
@@ -121,9 +127,57 @@ input:focus {
   align-items: center;
 }
 
-.game h1 {
+.game h1, .ranking h1 {
   color: #ff7d12e7;
   font-size: 50px;
+}
+
+.feedback, .ranking{
+  margin-top: 20%;
+  min-width: 600px;
+  min-height: 500px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divCongrat {
+  color: #ff7d12e7;
+  font-size: 30px;
+}
+
+.emoji {
+  font-size: 80px;
+  margin: 40px 0;
+}
+
+.placar {
+  display: flex;
+}
+.placar p {
+  margin: 0 20px;
+  color: #ff7d12e7;
+  font-size: 20px;
+}
+
+.buttonsFeedback,
+.buttonsRanking {
+  display: flex;
+  flex-direction: row;
+  margin: 50px 0;
+}
+
+.buttonsFeedback button,
+.buttonsRanking button {
+  margin: 0 20px;
+}
+
+.buttonsFeedback button:hover,
+.btn-config:hover,
+.settings_btn:hover,
+.buttonsRanking button:hover {
+  background-color: #ff7d12e7;
 }
 
 .header {
@@ -227,4 +281,53 @@ input:focus {
 
 .incorrect {
   border: 3px solid rgb(255, 0, 0);
+}
+
+.playersRanking {
+  display:flex;
+  align-items: center;
+  border-bottom: 1px solid #ff7d12e7;
+  margin-bottom: 20px;
+}
+
+.playersRanking span {
+  font-size: 20px;
+}
+
+.playersRanking img {
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+.rankingImg {
+  display: flex;
+  justify-content: flex-start;
+  width: 120px;
+  font-size: 20px;
+}
+
+.rankingScore {
+  width: 120px;
+  font-size: 20px;
+}
+
+.rankingName {
+  width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  white-space: normal;
+}
+
+.selectConfig {
+  width: 50%;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 10px;
+  font-size: 16px;
+  color: purple;
+}
+
+.config {
+  margin-top: 30%;
 }

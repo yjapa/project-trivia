@@ -49,11 +49,12 @@ class Config extends Component {
       'Entertainment: Cartoon & Animations'];
     const number = 9;
     return (
-      <div>
-        <h1 data-testid="settings-title">Pagina de Configurações</h1>
+      <div className="config">
+        <h1 data-testid="settings-title">Configurações</h1>
         <select
           name="category"
           onChange={ this.handleChange }
+          className="selectConfig"
         >
           { categories.map((category, index) => (
             <option
@@ -64,18 +65,23 @@ class Config extends Component {
             </option>
           ))}
         </select>
-        <select name="difficulty" onChange={ this.handleChange }>
+        <select
+          name="difficulty"
+          onChange={ this.handleChange }
+          className="selectConfig"
+        >
           <option value="easy">Fácil</option>
           <option value="medium">Médio</option>
           <option value="hard">Difícil</option>
         </select>
-        <select name="type" onChange={ this.handleChange }>
+        <select name="type" onChange={ this.handleChange } className="selectConfig">
           <option value="multiple">Múltipla Escolha</option>
           <option value="boolean">Verdadeiro / Falso</option>
         </select>
         <button
           type="button"
           onClick={ this.handleLogin }
+          className="btn-config"
         >
           Voltar
         </button>

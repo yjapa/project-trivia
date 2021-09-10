@@ -40,6 +40,7 @@ class Header extends Component {
           <p>
             Jogador:
             <span data-testid="header-player-name">
+              {' '}
               {name}
             </span>
           </p>
@@ -48,6 +49,7 @@ class Header extends Component {
           <p>
             Pontos:
             <span data-testid="header-score">
+              {' '}
               {score}
             </span>
           </p>

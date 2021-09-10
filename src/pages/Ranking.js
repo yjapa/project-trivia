@@ -18,17 +18,25 @@ class Ranking extends Component {
     const { players } = this.props;
     const scoreSort = players.sort((a, b) => b.score - a.score);
     const ranking = scoreSort.map(({ name, picture, score }, index) => (
-      <div key={ index }>
-        <img
-          src={ picture }
-          alt={ name }
-        />
-        <p data-testid={ `player-name-${index}` }>
-          { name }
-        </p>
-        <p data-testid={ `player-score-${index}` }>
-          { score }
-        </p>
+      <div className="playersRanking" key={ index }>
+        <div className="rankingImg">
+          <img
+            src={ picture }
+            alt={ name }
+          />
+        </div>
+        <div className="rankingName">
+          <span data-testid={ `player-name-${index}` }>
+            {name}
+          </span>
+        </div>
+        <div className="rankingScore">
+          <p data-testid={ `player-score-${index}` }>
+            { score }
+            {' '}
+            Pontos
+          </p>
+        </div>
       </div>
     ));
     return ranking;
@@ -36,24 +44,24 @@ class Ranking extends Component {
 
   render() {
     return (
-      <div>
+      <div className="ranking">
         <h1 data-testid="ranking-title">Ranking</h1>
-        <div>
-          { this.rankingPlayers()}
+        { this.rankingPlayers() }
+        <div className="buttonsRanking">
+          <button
+            type="button"
+            onClick={ () => this.redirect('/feedback') }
+          >
+            Voltar
+          </button>
+          <button
+            type="button"
+            data-testid="btn-go-home"
+            onClick={ () => this.redirect('/') }
+          >
+            Jogar Novamente
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={ () => this.redirect('/feedback') }
-        >
-          Voltar
-        </button>
-        <button
-          type="button"
-          data-testid="btn-go-home"
-          onClick={ () => this.redirect('/') }
-        >
-          Jogar Novamente
-        </button>
       </div>
     );
   }
