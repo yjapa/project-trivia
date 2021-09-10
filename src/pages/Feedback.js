@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSadTear, faLaughWink } from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/Header';
 import { playerRanking, zerador } from '../actions';
 
@@ -38,6 +36,7 @@ class Feedback extends React.Component {
   }
 
   congrat() {
+    const smile = '\u{1F609}';
     const stateLocalStorage = JSON.parse(localStorage.getItem('state'));
     const { assertions } = stateLocalStorage.player;
     if (assertions > 2) {
@@ -46,16 +45,17 @@ class Feedback extends React.Component {
           <p>
             Mandou bem!
             <br />
-            <FontAwesomeIcon icon={ faLaughWink } className="emoji" />
+            <span className="emoji">{ smile }</span>
           </p>
         </div>);
     }
+    const cry = '\u{1F62D}';
     return (
       <div className="divCongrat">
         <p>
           Podia ser melhor...
           <br />
-          <FontAwesomeIcon icon={ faSadTear } className="emoji" />
+          <span className="emoji">{ cry }</span>
         </p>
       </div>);
   }

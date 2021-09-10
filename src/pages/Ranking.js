@@ -24,6 +24,7 @@ class Ranking extends Component {
             src={ picture }
             alt={ name }
           />
+
         </div>
         <div className="rankingName">
           <span data-testid={ `player-name-${index}` }>
