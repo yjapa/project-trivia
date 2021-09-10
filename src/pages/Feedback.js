@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSadTear, faLaughWink } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faSadTear, faLaughWink } from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/Header';
 import { playerRanking, zerador } from '../actions';
 
@@ -46,16 +46,17 @@ class Feedback extends React.Component {
           <p>
             Mandou bem!
             <br />
-            <FontAwesomeIcon icon={ faLaughWink } className="emoji" />
+            {/* <FontAwesomeIcon icon={ faLaughWink } className="emoji" /> */}
           </p>
         </div>);
     }
+
     return (
       <div className="divCongrat">
         <p>
           Podia ser melhor...
           <br />
-          <FontAwesomeIcon icon={ faSadTear } className="emoji" />
+          {/* <FontAwesomeIcon icon={ faSadTear } className="emoji" /> */}
         </p>
       </div>);
   }
