@@ -15,8 +15,6 @@ class Ranking extends Component {
 
   render() {
     const { players } = this.props;
-    const beforePlayers = JSON.parse(localStorage.getItem('players'));
-    console.log(beforePlayers);
     // beforePlayers.some()
     localStorage.setItem('players', JSON.stringify(players));
     const stateLocalStorage = JSON.parse(localStorage.getItem('players'));
