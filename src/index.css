@@ -14,7 +14,7 @@ html {
   font-size: 12px;
 }
 
-.container {
+.container, .config {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@ html {
   font-size: 30px;
   color: white;
 }
-.container h1 {
+.container h1, .config h1 {
   margin-bottom: 70px;
   color: #ff7d12e7;
 }
@@ -78,6 +78,7 @@ html {
 
 .login_btn,
 .settings_btn,
+.btn-config,
 .buttonsFeedback button,
 .buttonsRanking button {
   width: 70%;
@@ -92,6 +93,7 @@ html {
 }
 
 .settings_btn,
+.btn-config,
 .buttonsFeedback button,
 .buttonsRanking button {
   background-color: rgba(128, 128, 128, 0.541);
@@ -172,6 +174,8 @@ input:focus {
 }
 
 .buttonsFeedback button:hover,
+.btn-config:hover,
+.settings_btn:hover,
 .buttonsRanking button:hover {
   background-color: #ff7d12e7;
 }
@@ -277,4 +281,53 @@ input:focus {
 
 .incorrect {
   border: 3px solid rgb(255, 0, 0);
+}
+
+.playersRanking {
+  display:flex;
+  align-items: center;
+  border-bottom: 1px solid #ff7d12e7;
+  margin-bottom: 20px;
+}
+
+.playersRanking span {
+  font-size: 20px;
+}
+
+.playersRanking img {
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+.rankingImg {
+  display: flex;
+  justify-content: flex-start;
+  width: 120px;
+  font-size: 20px;
+}
+
+.rankingScore {
+  width: 120px;
+  font-size: 20px;
+}
+
+.rankingName {
+  width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  white-space: normal;
+}
+
+.selectConfig {
+  width: 50%;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 10px;
+  font-size: 16px;
+  color: purple;
+}
+
+.config {
+  margin-top: 30%;
 }

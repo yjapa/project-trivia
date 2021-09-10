@@ -6,6 +6,7 @@ class Ranking extends Component {
   constructor() {
     super();
     this.redirect = this.redirect.bind(this);
+    this.rankingPlayers = this.rankingPlayers.bind(this);
   }
 
   redirect(path) {
@@ -13,27 +14,39 @@ class Ranking extends Component {
     history.push(path);
   }
 
-  render() {
+  rankingPlayers() {
     const { players } = this.props;
     const scoreSort = players.sort((a, b) => b.score - a.score);
-    const rankingPlayers = scoreSort.map(({ name, picture, score }, index) => (
-      <div key={ index }>
-        <img
-          src={ picture }
-          alt={ name }
-        />
-        <p data-testid={ `player-name-${index}` }>
-          { name }
-        </p>
-        <p data-testid={ `player-score-${index}` }>
-          { score }
-        </p>
+    const ranking = scoreSort.map(({ name, picture, score }, index) => (
+      <div className="playersRanking" key={ index }>
+        <div className="rankingImg">
+          <img
+            src={ picture }
+            alt={ name }
+          />
+        </div>
+        <div className="rankingName">
+          <span data-testid={ `player-name-${index}` }>
+            {name}
+          </span>
+        </div>
+        <div className="rankingScore">
+          <p data-testid={ `player-score-${index}` }>
+            { score }
+            {' '}
+            Pontos
+          </p>
+        </div>
       </div>
     ));
+    return ranking;
+  }
+
+  render() {
     return (
       <div className="ranking">
         <h1 data-testid="ranking-title">Ranking</h1>
-        { rankingPlayers }
+        { this.rankingPlayers() }
         <div className="buttonsRanking">
           <button
             type="button"
