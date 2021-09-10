@@ -6,6 +6,7 @@ class Ranking extends Component {
   constructor() {
     super();
     this.redirect = this.redirect.bind(this);
+    this.rankingPlayers = this.rankingPlayers.bind(this);
   }
 
   redirect(path) {
@@ -13,10 +14,10 @@ class Ranking extends Component {
     history.push(path);
   }
 
-  render() {
+  rankingPlayers() {
     const { players } = this.props;
     const scoreSort = players.sort((a, b) => b.score - a.score);
-    const rankingPlayers = scoreSort.map(({ name, picture, score }, index) => (
+    const ranking = scoreSort.map(({ name, picture, score }, index) => (
       <div key={ index }>
         <img
           src={ picture }
@@ -30,10 +31,16 @@ class Ranking extends Component {
         </p>
       </div>
     ));
+    return ranking;
+  }
+
+  render() {
     return (
       <div>
         <h1 data-testid="ranking-title">Ranking</h1>
-        { rankingPlayers }
+        <div>
+          { this.rankingPlayers()}
+        </div>
         <button
           type="button"
           onClick={ () => this.redirect('/feedback') }

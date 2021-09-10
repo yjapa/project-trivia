@@ -4,6 +4,7 @@ const GET_SCORE = 'GET_SCORE';
 const GET_URL = 'GET_URL';
 const RANKING_PLAYER = 'RANKING_PLAYER';
 const ZERA_PLAYER = 'ZERA_PLAYER';
+const CONFIG_GAME = 'CONFIG_GAME';
 
 export const infoPlayer = (payload) => ({
   type: INFO_PLAYER, payload,
@@ -27,4 +28,8 @@ export const playerRanking = (payload) => ({
 
 export const zerador = (payload) => ({
   type: ZERA_PLAYER, payload,
+});
+
+export const configGame = (payload) => ({
+  type: CONFIG_GAME, payload,
 });

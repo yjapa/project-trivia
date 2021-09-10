@@ -24,8 +24,19 @@ class Questions extends Component {
   }
 
   componentDidMount() {
-    const { token, getQuestions } = this.props;
-    getQuestions(token);
+    const { token, category, diff, type, getQuestions } = this.props;
+    // Lógica para concatenar string https://medium.com/geekculture/building-a-simple-quiz-app-using-a-rest-api-react-and-redux-5c8a85a9447f
+    let url = `&token=${token}`;
+    if (category.length) {
+      url = url.concat(`&category=${category}`);
+    }
+    if (diff.length) {
+      url = url.concat(`&difficulty=${diff}`);
+    }
+    if (type.length) {
+      url = url.concat(`&type=${type}`);
+    }
+    getQuestions(url);
   }
 
   getScore(currTime, diff) {
@@ -111,6 +122,7 @@ class Questions extends Component {
 
   render() {
     const { questions } = this.props;
+    console.log(questions);
     const { index } = this.props;
     if (questions.length === 0) return <p>Loading..</p>;
     const questionMap = questions.map((question) => this.quest(question));
@@ -120,13 +132,16 @@ class Questions extends Component {
   }
 }
 
-const mapStateToProps = ({ player, game }) => ({
+const mapStateToProps = ({ player, game, config }) => ({
   name: player.name,
   email: player.email,
   token: player.token,
   score: player.score,
   picture: player.picture,
   questions: game.questions,
+  category: config.category,
+  diff: config.difficulty,
+  type: config.type,
 });
 
 const mapDispatchToProps = (dispatch) => ({

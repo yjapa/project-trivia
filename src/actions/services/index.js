@@ -38,11 +38,11 @@ const questionsApiError = (error) => ({
   type: 'QUESTIONS_ERROR', status: error,
 });
 
-export function apiQUESTIONS(token) {
+export function apiQUESTIONS(configs) {
   return async (dispatch) => {
     try {
       dispatch(questionsApi());
-      const response = await fetch(`https://opentdb.com/api.php?amount=5&token=${token}`);
+      const response = await fetch(`https://opentdb.com/api.php?amount=5${configs}`);
       const questions = await response.json();
       return dispatch(questionsApiOk(questions.results));
     } catch (error) {
