@@ -1,7 +1,7 @@
 # Project Trivia - React
 
 # Contexto
-Este projeto foi desenvolvido na @Trybe(curso de programação). O projeto consiste num **Jogo de Perguntas e Respostas** na qual foi desenvolvido por um grupo de 4 estudantes.
+Este projeto foi desenvolvido na @Trybe(curso de programação). O projeto consiste num **Jogo de Perguntas e Respostas** na qual o jogador tem 30 segundos para responder. Quanto mais rápido o jogador responde, mais pontos ele ganha! Ao final do jogo, um ranking com as pontuações dos jogadores é mostrado.
 
 ## Técnologias usadas
 
