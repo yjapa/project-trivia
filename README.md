@@ -1,7 +1,7 @@
 # Project Trivia - React
 
 # Contexto
-Este projeto foi desenvolvido na @Trybe(curso de programação). O projeto consiste num jogo de perguntas e respostas na qual foi desenvolvido por um grupo de 4 estudantes.
+Este projeto foi desenvolvido na @Trybe(curso de programação). O projeto consiste num *Jogo de Perguntas e Respostas* na qual foi desenvolvido por um grupo de 4 estudantes.
 
 ## Técnologias usadas
 
