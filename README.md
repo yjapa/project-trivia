@@ -16,7 +16,7 @@ npm install
 ``` 
 ## Executando aplicação
 
-Para rodar o projeto, utilize na pasta raiz o comando:
+Para rodar o jogo, utilize na pasta raiz o comando:
 
   ```
     npm start
