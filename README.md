@@ -24,7 +24,7 @@ Para rodar o jogo, utilize na pasta raiz o comando:
 
 ## Autores:
 
-* Rafael Janovicci 
-* Ricardo Sousa
-* Pablo Almeida
-* Wesley Yudi
+* [Rafael Janovicci ](https://github.com/rjanovicci)
+* [Ricardo Sousa](https://github.com/ricardo-sousa-dev)
+* [Pablo Almeida](https://github.com/pabloalmeidac)
+* [Wesley Yudi](https://github.com/yjapa)
