@@ -22,7 +22,7 @@ Para rodar o jogo, utilize na pasta raiz o comando:
     npm start
   ```
 
-## Autores:
+## Desenvolvedores:
 
 * [Rafael Janovicci ](https://github.com/rjanovicci)
 * [Ricardo Sousa](https://github.com/ricardo-sousa-dev)
